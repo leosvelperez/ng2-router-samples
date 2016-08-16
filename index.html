@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <base href="/">
+    <title>Angular 2 Router Sample</title>
+
+    <link rel="stylesheet" href="./assets/styles.css">
+</head>
+
+<body>
+    <a2rs-app></a2rs-app>
+
+    <div id="app-loader-container">
+        <script type="text/javascript">
+            function afterBootstrapping() {
+                var appLoaderContainer = document.getElementById("app-loader-container");
+                var appLoader = document.getElementById("app-loader");
+
+                appLoader.className = "loaded";
+                setTimeout(function() {
+                    appLoaderContainer.parentNode.removeChild(appLoaderContainer);
+                }, 500);
+            }
+        </script>
+
+        <style type="text/css">
+            /* Animations */
+            @-webkit-keyframes spin { from { -webkit-transform: rotate(0); } to { -webkit-transform: rotate(360deg); } }
+            @keyframes spin { from { -webkit-transform: rotate(0); transform: rotate(0); } to { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+
+            #app-loader {
+                position: fixed;
+                top: calc(100vh / 2 - 100px);
+                width: 100%;
+                font-family: "Arial";
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 17px;
+                text-align: center;
+                opacity: 1;
+                z-index: 9999;
+                -webkit-transition: opacity .5s linear;
+                transition: opacity .5s linear;
+            }
+
+            #app-loader.loaded {
+                opacity: 0;
+            }
+
+            #app-loader:before {
+                content: " ";
+                display: block;
+                margin: 0 auto 10px;
+                width: 30px;
+                height: 30px;
+                background-image: url(assets/ic-loader.svg);
+                animation: spin .6s linear infinite;
+            }
+        </style>
+
+        <div id="app-loader">Loading</div>
+    </div>
+
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+
+    <script>
+        System.import('system-config.js')
+            .then(function () {
+                return System.import('app');
+            })
+            .then(afterBootstrapping)
+            .catch(console.error.bind(console));
+    </script>
+</body>
+
+</html>
