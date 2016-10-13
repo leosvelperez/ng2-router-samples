@@ -1,0 +1,17 @@
+section,
+aside {
+    display: inline-block;
+    padding: 20px;
+    height: calc(100% - 87px);
+    vertical-align: top;
+}
+
+section {
+    width: 80%;
+    background-color: lightblue;
+}
+
+aside {
+    width: 20%;
+    background-color: lightgreen;
+}

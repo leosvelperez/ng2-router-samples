@@ -2,23 +2,9 @@
     <h1>Angular 2 Router Sample</h1>
     <nav>
         <ul>
-            <li><a routerLink="/main-1">Main 1</a></li>
-            <li><a routerLink="/main-2/1">Main 2 with id 1</a></li>
-            <li><a routerLink="/main-2/-1">Main 2 with id -1</a></li>
-            <li><a routerLink="/main-3">Main 3 (CanActivate)</a></li>
-            <li><a routerLink="/main-4">Main 4 (CanDeactivate)</a></li>
-            <li><a [routerLink]="[{outlets: {aside: ['aside-1']}}]">Aside 1</a></li>
-            <li><a [routerLink]="[{outlets: {aside: ['aside-2']}}]">Aside 2</a></li>
-            <li><button (click)="aside1()">Aside 1</button></li>
-            <li><button (click)="aside2()">Aside 2</button></li>
-            <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
-            <li *ngIf="isLoggedIn"><button (click)="logout()">Logout</button></li>
+            <li><a [routerLink]="['main']">Main</a></li>
+            <li><a [routerLink]="['lazy-loaded']">Lazy Loaded</a></li>
         </ul>
     </nav>
 </header>
-<section>
-    <router-outlet></router-outlet>
-</section><!--
---><aside>
-    <router-outlet name="aside"></router-outlet>
-</aside>
+<router-outlet></router-outlet>
